@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class RussianQuest extends ApplicationAdapter {
+public class CrazyCat extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture cat;
 	
