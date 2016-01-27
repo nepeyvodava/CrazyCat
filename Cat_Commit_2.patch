@@ -1,0 +1,108 @@
+Index: core/src/com/russianquest/game/RussianQuest.java
+===================================================================
+--- core/src/com/russianquest/game/RussianQuest.java	(revision 3d393afc2f0fe92a5c417fbb6780ea80ee056251)
++++ core/src/com/russianquest/game/CrazyCat.java	(revision )
+@@ -6,7 +6,7 @@
+ import com.badlogic.gdx.graphics.Texture;
+ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+ 
+-public class RussianQuest extends ApplicationAdapter {
++public class CrazyCat extends ApplicationAdapter {
+ 	SpriteBatch batch;
+ 	Texture cat;
+ 	
+Index: desktop/src/com/russianquest/game/desktop/DesktopLauncher.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- desktop/src/com/russianquest/game/desktop/DesktopLauncher.java	(revision 3d393afc2f0fe92a5c417fbb6780ea80ee056251)
++++ desktop/src/com/russianquest/game/desktop/DesktopLauncher.java	(revision )
+@@ -2,7 +2,7 @@
+ //xexe
+ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+-import com.russianquest.game.RussianQuest;
++import com.russianquest.game.CrazyCat;
+ 
+ public class DesktopLauncher {
+ 	public static void main (String[] arg) {
+@@ -10,6 +10,6 @@
+ 		config.title = "Cat";
+ 		config.width = 800;
+ 		config.height = 480;
+-		new LwjglApplication(new RussianQuest(), config);
++		new LwjglApplication(new CrazyCat(), config);
+ 	}
+ }
+Index: html/src/com/russianquest/game/client/HtmlLauncher.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- html/src/com/russianquest/game/client/HtmlLauncher.java	(revision 3d393afc2f0fe92a5c417fbb6780ea80ee056251)
++++ html/src/com/russianquest/game/client/HtmlLauncher.java	(revision )
+@@ -3,7 +3,7 @@
+ import com.badlogic.gdx.ApplicationListener;
+ import com.badlogic.gdx.backends.gwt.GwtApplication;
+ import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+-import com.russianquest.game.RussianQuest;
++import com.russianquest.game.CrazyCat;
+ 
+ public class HtmlLauncher extends GwtApplication {
+ 
+@@ -14,6 +14,6 @@
+ 
+         @Override
+         public ApplicationListener getApplicationListener () {
+-                return new RussianQuest();
++                return new CrazyCat();
+         }
+ }
+\ No newline at end of file
+Index: ios/src/com/russianquest/game/IOSLauncher.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ios/src/com/russianquest/game/IOSLauncher.java	(revision 3d393afc2f0fe92a5c417fbb6780ea80ee056251)
++++ ios/src/com/russianquest/game/IOSLauncher.java	(revision )
+@@ -5,13 +5,12 @@
+ 
+ import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
+ import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
+-import com.russianquest.game.RussianQuest;
+ 
+ public class IOSLauncher extends IOSApplication.Delegate {
+     @Override
+     protected IOSApplication createApplication() {
+         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
+-        return new IOSApplication(new RussianQuest(), config);
++        return new IOSApplication(new CrazyCat(), config);
+     }
+ 
+     public static void main(String[] argv) {
+\ No newline at end of file
+Index: android/src/com/russianquest/game/AndroidLauncher.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- android/src/com/russianquest/game/AndroidLauncher.java	(revision 3d393afc2f0fe92a5c417fbb6780ea80ee056251)
++++ android/src/com/russianquest/game/AndroidLauncher.java	(revision )
+@@ -4,7 +4,6 @@
+ 
+ import com.badlogic.gdx.backends.android.AndroidApplication;
+ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+-import com.russianquest.game.RussianQuest;
+ 
+ public class AndroidLauncher extends AndroidApplication {
+ 	@Override
+@@ -13,6 +12,6 @@
+ 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+ 		config.useAccelerometer = false;
+ 		config.useCompass = false;
+-		initialize(new RussianQuest(), config);
++		initialize(new CrazyCat(), config);
+ 	}
+ }

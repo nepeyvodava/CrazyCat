@@ -106,4 +106,13 @@ public class CrazyCat extends ApplicationAdapter {
 			}
 		}
 	}
+
+	@Override
+	public void dispose(){
+		super.dispose();
+		catImage.dispose();
+		miteImage.dispose();
+		meowKickCat.dispose();
+		batch.dispose();
+	}
 }
