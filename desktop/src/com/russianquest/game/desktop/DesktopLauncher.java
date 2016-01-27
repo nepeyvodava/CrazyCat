@@ -1,5 +1,5 @@
 package com.russianquest.game.desktop;
-//xexe
+//xexewerytertghe
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.russianquest.game.RussianQuest;
