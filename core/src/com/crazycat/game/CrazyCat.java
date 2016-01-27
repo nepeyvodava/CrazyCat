@@ -100,8 +100,9 @@ public class CrazyCat extends ApplicationAdapter {
 			Rectangle mitedrop = iter.next();
 			mitedrop.x -= 200 * Gdx.graphics.getDeltaTime();
 			if (mitedrop.x + 64 < 0) iter.remove();
-			if (mitedrop.overlaps()){
+			if (mitedrop.overlaps(cat)){
 				meowKickCat.play();
+				iter.remove();
 			}
 		}
 	}
