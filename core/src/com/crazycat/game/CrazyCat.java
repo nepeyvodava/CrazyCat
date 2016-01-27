@@ -1,4 +1,4 @@
-package com.russianquest.game;
+package com.crazycat.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

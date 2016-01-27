@@ -1,9 +1,9 @@
-package com.russianquest.game.client;
+package com.crazycat.game.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.russianquest.game.CrazyCat;
+import com.crazycat.game.CrazyCat;
 
 public class HtmlLauncher extends GwtApplication {
 

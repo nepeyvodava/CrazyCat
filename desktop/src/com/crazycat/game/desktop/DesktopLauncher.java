@@ -1,8 +1,8 @@
-package com.russianquest.game.desktop;
+package com.crazycat.game.desktop;
 //xexewerytertghe
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.russianquest.game.CrazyCat;
+import com.crazycat.game.CrazyCat;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

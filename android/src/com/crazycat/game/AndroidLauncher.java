@@ -1,4 +1,4 @@
-package com.russianquest.game;
+package com.crazycat.game;
 
 import android.os.Bundle;
 

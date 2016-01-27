@@ -8,7 +8,7 @@
 	<inherits name='com.badlogic.ashley_gwt' />
 	<inherits name='Box2DLights' />
 
-    <inherits name='com.russianquest.game.GdxDefinition' />
+    <inherits name='com.crazycat.game.GdxDefinition' />
     
     <collapse-all-properties />
     

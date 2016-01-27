@@ -1,4 +1,4 @@
-package com.russianquest.game;
+package com.crazycat.game;
 
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;

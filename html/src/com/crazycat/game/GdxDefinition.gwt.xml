@@ -9,7 +9,7 @@
 	<inherits name='Box2DLights' />
 
 	<inherits name='RussianQuest' />
-	<entry-point class='com.russianquest.game.client.HtmlLauncher' />
+	<entry-point class='com.crazycat.game.client.HtmlLauncher' />
 	
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
 </module>
