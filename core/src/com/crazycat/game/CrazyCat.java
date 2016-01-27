@@ -3,6 +3,7 @@ package com.crazycat.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -21,7 +22,8 @@ public class CrazyCat extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture catImage;
 	Texture miteImage;
-	Sound meowKickCat;
+	Sound meowCat;
+	Music backGroundMusic;
 	Rectangle cat;
 	Vector3 touchPos;
 	Array<Rectangle> mitedrops;
@@ -39,7 +41,8 @@ public class CrazyCat extends ApplicationAdapter {
 		catImage = new Texture("FinalCat-64x128.png");
 		miteImage = new Texture("mite-alt-64x64.png");
 
-		meowKickCat = Gdx.audio.newSound(Gdx.files.internal("meowKickCat.wav"));
+		meowCat = Gdx.audio.newSound(Gdx.files.internal("meowCat.wav"));
+		backGroundMusic = Gdx.audio.newMusic(Gdx.files.internal("level_1_music.mp3"));
 
 		cat = new Rectangle();
 		cat.x = 0;
@@ -67,6 +70,10 @@ public class CrazyCat extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		camera.update();
+
+		backGroundMusic.play();
+		backGroundMusic.setVolume((float)0.5);
+		backGroundMusic.setLooping(true);
 
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -101,7 +108,7 @@ public class CrazyCat extends ApplicationAdapter {
 			mitedrop.x -= 200 * Gdx.graphics.getDeltaTime();
 			if (mitedrop.x + 64 < 0) iter.remove();
 			if (mitedrop.overlaps(cat)){
-				meowKickCat.play();
+				meowCat.play();
 				iter.remove();
 			}
 		}
@@ -112,7 +119,8 @@ public class CrazyCat extends ApplicationAdapter {
 		super.dispose();
 		catImage.dispose();
 		miteImage.dispose();
-		meowKickCat.dispose();
+		meowCat.dispose();
+		backGroundMusic.dispose();
 		batch.dispose();
 	}
 }
