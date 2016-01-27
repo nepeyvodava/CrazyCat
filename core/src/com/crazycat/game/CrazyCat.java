@@ -8,17 +8,24 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.TimeUtils;
 
-import java.awt.*;
+import com.badlogic.gdx.math.Rectangle;
+import java.util.Iterator;
 
 public class CrazyCat extends ApplicationAdapter {
 	OrthographicCamera camera;
 	SpriteBatch batch;
 	Texture catImage;
+	Texture miteImage;
 	Sound meowKickCat;
 	Rectangle cat;
 	Vector3 touchPos;
+	Array<Rectangle> mitedrops;
+	long lastDropTime;
 	
 	@Override
 	public void create () {
@@ -30,6 +37,7 @@ public class CrazyCat extends ApplicationAdapter {
 		touchPos = new Vector3();
 
 		catImage = new Texture("FinalCat-64x128.png");
+		miteImage = new Texture("mite-alt-64x64.png");
 
 		meowKickCat = Gdx.audio.newSound(Gdx.files.internal("meowKickCat.wav"));
 
@@ -38,6 +46,19 @@ public class CrazyCat extends ApplicationAdapter {
 		cat.y = 20;
 		cat.width = 64;
 		cat.height = 128;
+
+		mitedrops = new Array<Rectangle>();
+		spawnMiteDrop();
+	}
+
+	private void spawnMiteDrop(){
+		Rectangle mitedrop = new Rectangle();
+		mitedrop.x = 800;
+		mitedrop.y = MathUtils.random(0, 480 - 64);
+		mitedrop.width = 64;
+		mitedrop.height = 64;
+		mitedrops.add(mitedrop);
+		lastDropTime = TimeUtils.nanoTime();
 	}
 
 	@Override
@@ -50,6 +71,9 @@ public class CrazyCat extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.draw(catImage, cat.x, cat.y);
+		for(Rectangle mitedrop: mitedrops){
+			batch.draw(miteImage, mitedrop.x, mitedrop.y);
+		}
 		batch.end();
 
 		if(Gdx.input.isTouched()){
@@ -68,5 +92,17 @@ public class CrazyCat extends ApplicationAdapter {
 		if(cat.x > (800 - 64)) cat.x = 800 - 64;
 		if(cat.y < 0) cat.y = 0;
 		if(cat.y > (480 - 128)) cat.y = 480 - 128;
+
+		if(TimeUtils.nanoTime() - lastDropTime > 1000000000 ) spawnMiteDrop();
+
+		Iterator<Rectangle> iter = mitedrops.iterator();
+		while (iter.hasNext()){
+			Rectangle mitedrop = iter.next();
+			mitedrop.x -= 200 * Gdx.graphics.getDeltaTime();
+			if (mitedrop.x + 64 < 0) iter.remove();
+			if (mitedrop.overlaps()){
+				meowKickCat.play();
+			}
+		}
 	}
 }
