@@ -3,6 +3,7 @@ package com.crazycat.game.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.crazycat.game.CrazyCat;
+import com.crazycat.game.GameScreen;
 
 
 public class DesktopLauncher {
