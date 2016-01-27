@@ -1,8 +1,9 @@
 package com.crazycat.game.desktop;
-//xexewerytertghe
+//xexe
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.crazycat.game.CrazyCat;
+
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
