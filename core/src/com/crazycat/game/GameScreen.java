@@ -85,10 +85,6 @@ public class GameScreen implements Screen {
 		}
 		game.batch.end();
 
-		backGroundMusic.play();
-		backGroundMusic.setVolume(0.4f);
-		backGroundMusic.setLooping(true);
-
 		if(Gdx.input.isTouched()){
 			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 			camera.unproject(touchPos);
@@ -153,5 +149,7 @@ public class GameScreen implements Screen {
 	@Override
 	public void show() {
 		backGroundMusic.play();
+		backGroundMusic.setVolume(0.35f);
+		backGroundMusic.setLooping(true);
 	}
 }
