@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -23,7 +24,7 @@ public class GameScreen implements Screen {
 	OrthographicCamera camera;
 	SpriteBatch batch;
 	Texture catImage;
-	Texture miteImage;
+//	Texture miteImage;
 	Sound meowCat;
 	Music backGroundMusic;
 	Rectangle cat;
@@ -31,6 +32,7 @@ public class GameScreen implements Screen {
 	Array<Rectangle> mitedrops;
 	long lastMiteTime;
 	int mitesGathered;
+	private Animation mitesAnimation;
 	
 
 	public GameScreen (final CrazyCat gam) {
@@ -44,7 +46,9 @@ public class GameScreen implements Screen {
 		touchPos = new Vector3();
 
 		catImage = new Texture("FinalCat-64x128.png");
-		miteImage = new Texture("mite-64x64.png");
+	//	miteImage = new Texture("mite-64x64.png");
+		Texture texture = new Texture("mite-move64x64.png");
+		mitesAnimation = new Animation(new TextureRegion(texture), 3, 0.4f);
 
 		meowCat = Gdx.audio.newSound(Gdx.files.internal("meowCat.wav"));
 		backGroundMusic = Gdx.audio.newMusic(Gdx.files.internal("level_1_music.mp3"));
@@ -75,13 +79,14 @@ public class GameScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		camera.update();
+		mitesAnimation.update(delta);
 
 		game.batch.setProjectionMatrix(camera.combined);
 		game.batch.begin();
 		game.font.draw(game.batch, "MEAW: " + mitesGathered, 0, 480);
 		game.batch.draw(catImage, cat.x, cat.y);
 		for(Rectangle mitedrop: mitedrops){
-			game.batch.draw(miteImage, mitedrop.x, mitedrop.y);
+			game.batch.draw(mitesAnimation.getFrame(), mitedrop.x, mitedrop.y);
 		}
 		game.batch.end();
 
@@ -107,7 +112,7 @@ public class GameScreen implements Screen {
 		Iterator<Rectangle> iter = mitedrops.iterator();
 		while (iter.hasNext()){
 			Rectangle mitedrop = iter.next();
-			mitedrop.x -= 150 * Gdx.graphics.getDeltaTime();
+			mitedrop.x -= 120 * Gdx.graphics.getDeltaTime();
 			if (mitedrop.x + 64 < 0) iter.remove();
 			if (mitedrop.overlaps(cat)){
 				mitesGathered++;
@@ -140,10 +145,11 @@ public class GameScreen implements Screen {
 	@Override
 	public void dispose(){
 		catImage.dispose();
-		miteImage.dispose();
+	//	miteImage.dispose();
 		meowCat.dispose();
 		backGroundMusic.dispose();
 		batch.dispose();
+		mitesAnimation.dispose();
 	}
 
 	@Override
